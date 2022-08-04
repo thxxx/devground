@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to Dev ground!</h1>
+        <h1 className={styles.title}>Dev ground입니다 여러분!</h1>
         <Link href="/write">
           <a>쓰러가기</a>
         </Link>
