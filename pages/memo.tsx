@@ -109,7 +109,7 @@ const UrlDateContainer = styled.div`
 
 const MemoPage = () => {
   const [userInfo, setUserInfo] = useState('')
-  const [memos, setMemos] = useState()
+  const [memos, setMemos] = useState([])
   const [init, setInit] = useState(false)
 
   useEffect(() => {
@@ -127,7 +127,7 @@ const MemoPage = () => {
         .where('id', '==', userInfo)
         .orderBy('createdAt', 'desc')
         .get()
-      const memoText = didMemo.docs.map((doc) => {
+      const memoText: any = didMemo.docs.map((doc) => {
         return { ...doc.data() }
       })
       if (memoText.length > 0) {
@@ -144,9 +144,10 @@ const MemoPage = () => {
 
   const returnDate = (createdAt: number) => {
     const day = createdAt
-    const date = Date(day.seconds).split(' ')
+    const date = Date().split(' ')
+    // day.seconds
 
-    const months = {
+    const months: any = {
       Jan: '01',
       Feb: '02',
       Mar: '03',
