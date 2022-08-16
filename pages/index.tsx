@@ -37,7 +37,9 @@ const Home: NextPage = () => {
     getLocalStorage()
   }, [])
 
-  const submitMail = () => {}
+  const submitMail = () => {
+    console.log('메일 제출')
+  }
 
   return (
     <>
