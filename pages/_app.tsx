@@ -4,8 +4,13 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import styled from '@emotion/styled'
 
 import * as ga from '../lib/gtag'
+
+const MainStyle = styled.div`
+  font-family: SCoreDream;
+`
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -24,11 +29,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
       <Head>
-        <title>Dev ground</title>
-        <meta name="description" content="Dev ground app by Cosmic Resonance" />
+        <title>INKON</title>
+        <meta name="description" content="Memo on Web by Cosmic Resonance" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <MainStyle>
+        <Component {...pageProps} />
+      </MainStyle>
     </ChakraProvider>
   )
 }
