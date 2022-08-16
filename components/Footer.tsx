@@ -25,7 +25,7 @@ const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Powered by <span> &nbsp;MemoMountain</span>
+        Powered by <span>MemoMountain</span>
       </a>
     </FooterContainer>
   )

@@ -10,6 +10,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
+  "rules": { "react/no-unescaped-entities": 0 },
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
