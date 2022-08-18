@@ -2,7 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { dbService } from './api/fbase'
 import AppBar from '../components/AppBar'
+import Footer from '../components/Footer'
 import { Title } from '../styles/homestyles'
+import styles from '../styles/Home.module.css'
 
 const WriteContainer = styled.div`
   width: 100vw;
@@ -10,8 +12,8 @@ const WriteContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-family: SCoreDream;
-  padding: 100px 0px;
+  font-family: nanumsquare;
+  padding: 100px 0px 50vh 0px;
 `
 
 const WriteInnerContainer = styled.div`
@@ -30,6 +32,7 @@ const OneMemo = styled.div`
   width: 100%;
   padding: 15px 15px;
   font-size: 16px;
+  font-weight: 700;
   transition-duration: 0.3s;
   cursor: pointer;
   text-align: start;
@@ -163,9 +166,9 @@ const MemoPage = () => {
   }
 
   const returnDate = (createdAt: number) => {
-    const day = createdAt
-    const date = Date().split(' ')
-    // day.seconds
+    const date = new Date(createdAt).toString().split(' ')
+
+    console.log(date, 'adw')
 
     const months: any = {
       Jan: '01',
@@ -186,19 +189,19 @@ const MemoPage = () => {
   }
 
   return (
-    <>
+    <div className={styles.no}>
       <AppBar />
       <WriteContainer>
         {init ? (
           <>
             {userInfo.length > 1 ? (
-              <Title>MEMO-ON에 저장된 메모들</Title>
+              <Title>Scrib에 저장된 메모들</Title>
             ) : (
               <Title>크롬확장프로그램을 켠 후 로그인을 하셔야 합니다.</Title>
             )}
             <Desc>
               <div className="desc">
-                직접 저장하신 메모들이 최신순으로 정렬되어있습니다.
+                직접 작성한 메모들이 최신순으로 정렬되어있습니다.
               </div>
             </Desc>
             <WriteInnerContainer>
@@ -237,7 +240,8 @@ const MemoPage = () => {
           </>
         )}
       </WriteContainer>
-    </>
+      <Footer />
+    </div>
   )
 }
 

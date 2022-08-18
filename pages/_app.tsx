@@ -9,7 +9,7 @@ import styled from '@emotion/styled'
 import * as ga from '../lib/gtag'
 
 const MainStyle = styled.div`
-  font-family: SCoreDream;
+  font-family: nanumsquare;
 `
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
       <Head>
-        <title>MEMO-ON</title>
+        <title>Scrib</title>
         <meta
           name="description"
           content="현재 웹페이지에 바로 메모를 남기고 나중에 모아서 확인하세요."

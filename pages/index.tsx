@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import {
   MainContainer,
   Title,
+  DefaultButton3,
   DefaultButton,
   DefaultButton2,
   ColumnCenter,
@@ -24,7 +25,7 @@ import {
   MainBox,
 } from '../styles/homestyles'
 import Image from 'next/image'
-import { Input, Button } from '@chakra-ui/react'
+import { Input } from '@chakra-ui/react'
 import { dbService } from './api/fbase'
 
 import clipboard from '../assets/clipboard.png'
@@ -69,10 +70,11 @@ const Home: NextPage = () => {
         <MainBox>
           <Title>
             <div>
-              MEMO-ON <ColorText>:</ColorText>
+              Scrib <ColorText>:</ColorText>
             </div>
             <div style={{ marginTop: '20px' }}>
-              이제 웹페이지에 바로 메모하세요.
+              이제 가장 쉬운 방법으로 <br />
+              웹페이지에 바로 메모하세요.
             </div>
           </Title>
           <ButtonContainer>
@@ -94,7 +96,7 @@ const Home: NextPage = () => {
         </ColumnCenter>
         <ShortcutContainer>
           <div className="title">
-            <ColorText>MEMO-ON을 더 쉽게 사용하는 방법</ColorText>
+            <ColorText>스크립을 더 쉽게 사용하는 방법</ColorText>
           </div>
           <div className="explain_container">
             <div className="one_explain" style={{ marginTop: '20px' }}>
@@ -132,7 +134,9 @@ const Home: NextPage = () => {
         <ColumnCenter>
           <BoxContainer>
             <ColumnCenter>
-              <div>MEMO-ON에는 앞으로 아래의 기능들이 추가될 예정이에요!</div>
+              <div className="title">
+                스크립에는 앞으로 아래의 기능들이 추가될 예정이에요!
+              </div>
               <FeatueContainer>
                 <FeatureBox>
                   <ImageWrapper>
@@ -156,25 +160,27 @@ const Home: NextPage = () => {
             </ColumnCenter>
             <InputContainer>
               <div className="inner">
-                <div>
-                  MEMO-ON에 기능이 추가될 때<br />
+                <div className="title">
+                  스크립에 기능이 추가될 때<br />
                   알람을 받고싶으시다면 아래에 이메일을 적어주세요.
                 </div>
-                <div className="label">메일 입력</div>
-                <InputCustom
-                  placeholder="example23@gmail.com"
-                  value={mail}
-                  onChange={(e) => setMail(e.currentTarget.value)}
-                />
-                <div className="label">직군</div>
-                <InputCustom
-                  placeholder="SNS 마케터"
-                  value={job}
-                  onChange={(e) => setJob(e.currentTarget.value)}
-                />
-                <SubmitButton onClick={() => submitMail()}>
-                  알림받기
-                </SubmitButton>
+                <div className="input_wrapper">
+                  <div className="label">메일 입력</div>
+                  <InputCustom
+                    placeholder="example23@gmail.com"
+                    value={mail}
+                    onChange={(e) => setMail(e.currentTarget.value)}
+                  />
+                  <div className="label">직군</div>
+                  <InputCustom
+                    placeholder="ex) SNS 마케터, PM 등"
+                    value={job}
+                    onChange={(e) => setJob(e.currentTarget.value)}
+                  />
+                  <SubmitButton onClick={() => submitMail()}>
+                    알림받기
+                  </SubmitButton>
+                </div>
               </div>
             </InputContainer>
           </BoxContainer>

@@ -3,7 +3,7 @@ import { Input, Button } from '@chakra-ui/react'
 import Image from 'next/image'
 
 export const MainContainer = styled.main`
-  min-height: 90vh;
+  min-height: 97vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
@@ -13,21 +13,22 @@ export const MainContainer = styled.main`
   background: linear-gradient(to right, white -20%, #7da7f9 80%);
 `
 export const MainBox = styled.div`
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  box-shadow: 0 0px 16px 0 rgba(231, 238, 235, 0.37) inset;
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  // background: rgba(255, 255, 255, 0.25);
+  // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  // box-shadow: 0 0px 16px 0 rgba(231, 238, 235, 0.37) inset;
+  // backdrop-filter: blur(7px);
+  // -webkit-backdrop-filter: blur(7px);
+  // border-radius: 10px;
+  // border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 50px;
-  width: 70%;
+  width: 100%;
   text-align: center;
 `
 
 export const Title = styled.h1`
   font-size: 45px;
   margin: 20px 0px;
+  font-weight: 900;
   text-align: center;
   @media only screen and (max-width: 800px) {
     text-align: center;
@@ -41,10 +42,12 @@ export const ColorText = styled.span`
 export const DefaultButton = styled.a`
   border-radius: 5px;
   padding: 15px 20px;
+  width: 180px;
   color: white;
   background-color: #5491c4;
   cursor: pointer;
   margin: 5px;
+  text-align: center;
 
   &:hover {
     background-color: #4986c0;
@@ -53,15 +56,23 @@ export const DefaultButton = styled.a`
 export const DefaultButton2 = styled.a`
   border-radius: 5px;
   padding: 15px 20px;
+  width: 180px;
   color: white;
   background-color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
   border: 1px solid #5481c4;
-  margin: 5px;
+  margin-left: 10px;
+  text-align: center;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.9);
   }
+`
+
+export const DefaultButton3 = styled(DefaultButton2)`
+  font-size: 18px;
+  width: 240px;
+  padding: 20px 50px;
 `
 
 export const ColumnCenter = styled.div`
@@ -70,13 +81,17 @@ export const ColumnCenter = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  .title {
+    font-weight: 700;
+    font-size: 18px;
+  }
 `
 
 export const BoxContainer = styled.div`
-  margin: 30px;
-  padding: 50px;
+  margin-top: 80px;
+  padding: 70px 50px 70px 50px;
   width: 80%;
-  background-color: rgba(0, 0, 0, 0.06);
+  background: #7da7f9bb;
   border-radius: 15px;
   display: flex;
   flex-direction: row;
@@ -124,13 +139,20 @@ export const FeatureBox = styled.div`
 
 export const InputContainer = styled(ColumnCenter)`
   margin-left: 30px;
+  padding: 0px 0px 40px 0px;
+  justify-content: start;
   .inner {
     width: 80%;
+    font-weight: 700;
   }
   .label {
     width: 100%;
     text-align: start;
     margin: 15px 3px 5px 3px;
+  }
+
+  .input_wrapper {
+    padding-top: 40px;
   }
 
   @media only screen and (max-width: 800px) {
@@ -151,7 +173,7 @@ export const InputCustom = styled(Input)`
 export const SubmitButton = styled(Button)`
   width: 100%;
   margin-top: 15px;
-  background-color: #5491c4;
+  background-color: black;
   color: white;
 
   &:hover {
@@ -187,18 +209,20 @@ export const ShortcutContainer = styled.div`
   }
   .text {
     margin-top: 30px;
+    font-weight: 700;
   }
   .title {
     font-size: 25px;
-    font-weight: 600;
+    font-weight: 700;
   }
   .explain_container {
     display: flex;
     flex-direction: row;
     padding: 20px 0px;
+    justify-content: center;
 
     .one_explain {
-      width: 50%;
+      width: 35%;
     }
     @media only screen and (max-width: 800px) {
       flex-direction: column;

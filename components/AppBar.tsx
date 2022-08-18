@@ -24,9 +24,11 @@ const ButtonContainer = styled.div`
 
 const LinkTo = styled.a`
   text-align: center;
-  width: 60px;
+  padding: 0px 10px;
   color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
 
   &:hover {
     color: black;
@@ -38,7 +40,7 @@ const LinkToHome = styled.a`
   width: 150px;
   color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
 
   &:hover {
@@ -51,9 +53,12 @@ const AppBar = () => {
   return (
     <AppContainer>
       <Link href="/">
-        <LinkToHome>MEMO-ON</LinkToHome>
+        <LinkToHome>SCRIB</LinkToHome>
       </Link>
       <ButtonContainer>
+        <LinkTo href="https://tally.so/r/mRGjOj" target="_blank">
+          사용하러 가기
+        </LinkTo>
         <Link href="/memo">
           <LinkTo>내 메모</LinkTo>
         </Link>

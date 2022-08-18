@@ -1,5 +1,19 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+/* @import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css); */
+/* 
+.nanummyeongjo * {
+  font-family: 'Nanum Myeongjo', serif;
+} */
+
+.notosanskr * {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 .container {
-  padding: 100px 2rem 0px 2rem;
+  padding: 100px 2rem 150px 2rem;
+}
+
+.no {
 }
 
 .main {

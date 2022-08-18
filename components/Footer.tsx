@@ -4,11 +4,12 @@ import styled from '@emotion/styled'
 const FooterContainer = styled.footer`
   display: flex;
   flex: 1;
-  padding: 2rem 0;
+  padding: 5rem 0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: nanumsquare;
 
   .team {
     font-size: 20px;
@@ -24,7 +25,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <div className="team">
-        MEMO-ON <span style={{ color: 'gray' }}>by</span> Cosmic Resonance
+        Scrib <span style={{ color: 'gray' }}>by</span> Cosmic Resonance
       </div>
       <div>Mail : cos.resonance@gmail.com</div>
       <div className="info">
