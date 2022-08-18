@@ -57,6 +57,9 @@ const OneMemo = styled.div`
     .arrow {
       opacity: 1;
     }
+    .url {
+      color: rgba(0, 0, 0, 0.5);
+    }
   }
 `
 
@@ -71,15 +74,18 @@ const HeadingContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  font-size: 14px;
+  font-size: 11px;
   margin-top: 6px;
-  border-top-width: 1px;
-  border-top-color: rgba(0, 0, 0, 0.1);
-  padding-top: 10px;
   padding-bottom: 3px;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.3);
 
   .title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .url {
+    width: 50%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -101,10 +107,10 @@ const UrlDateContainer = styled.div`
   border-top-width: 1px;
   border-top-color: rgba(0, 0, 0, 0.1);
   padding-top: 14px;
-  padding-bottom: 3px;
+  padding-bottom: 1px;
 
   .url {
-    width: 70%;
+    width: 50%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -209,7 +215,7 @@ const MemoPage = () => {
       Dec: '12',
     }
 
-    return [date[3], months[date[1]], date[2], date[4]]
+    return [date[3], months[date[1]], date[2], date[4]?.split(':')[0]]
   }
 
   return (
@@ -218,7 +224,7 @@ const MemoPage = () => {
       <WriteContainer>
         {init ? (
           <>
-            {userInfo.length < 1 ? (
+            {userInfo.length > 1 ? (
               <>
                 <Title>Scrib에 저장된 메모들</Title>
                 <Desc>
@@ -227,19 +233,17 @@ const MemoPage = () => {
                   </div>
                 </Desc>
               </>
-            ) : true ? (
-              <>
-                <MobileContainer>
-                  <MobileTitle>
-                    죄송합니다. 아직까지 모바일에서는 사용이 불가능합니다.
-                  </MobileTitle>
-                  <div>
-                    만약 불편을 겪으셨다면 아래 문의하기를 클릭해서 의견을
-                    남겨주세요! 바로 반영하도록 하겠습니다.
-                  </div>
-                  <a href="https://tally.so/r/mRGjOj">문의하기</a>
-                </MobileContainer>
-              </>
+            ) : isMobile ? (
+              <MobileContainer>
+                <MobileTitle>
+                  죄송합니다. 아직까지 모바일에서는 사용이 불가능합니다.
+                </MobileTitle>
+                <div>
+                  만약 불편을 겪으셨다면 아래 문의하기를 클릭해서 의견을
+                  남겨주세요! 바로 반영하도록 하겠습니다.
+                </div>
+                <a href="https://tally.so/r/mRGjOj">문의하기</a>
+              </MobileContainer>
             ) : (
               <Title>크롬확장프로그램을 켠 후 로그인을 하셔야 합니다.</Title>
             )}
@@ -254,18 +258,17 @@ const MemoPage = () => {
                         key={item.createdAt}
                       >
                         <Memo>{item.memo}</Memo>
-                        {/* <HeadingContainer>
-                          <div className="title">{item.title}</div>
-                          <div className="h1">{item.h1}</div>
-                        </HeadingContainer> */}
                         <UrlDateContainer>
                           {/* <div className="url">{item.url}</div> */}
                           <div className="title">{item.title}</div>
                           <div className="date">
-                            {date[0]}.{date[1]}.{date[2]}
+                            {date[0]}.{date[1]}.{date[2]} {date[3]}시
                           </div>
                           {/* <span className="arrow">▶</span> */}
                         </UrlDateContainer>
+                        <HeadingContainer>
+                          <div className="url">{item.url}</div>
+                        </HeadingContainer>
                       </OneMemo>
                     )
                   })}
