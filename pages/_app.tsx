@@ -29,8 +29,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
       <Head>
-        <title>INKON</title>
-        <meta name="description" content="Memo on Web by Cosmic Resonance" />
+        <title>MEMO-ON</title>
+        <meta
+          name="description"
+          content="현재 웹페이지에 바로 메모를 남기고 나중에 모아서 확인하세요."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainStyle>

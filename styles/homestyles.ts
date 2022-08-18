@@ -2,10 +2,33 @@ import styled from '@emotion/styled'
 import { Input, Button } from '@chakra-ui/react'
 import Image from 'next/image'
 
+export const MainContainer = styled.main`
+  min-height: 90vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, white -20%, #7da7f9 80%);
+`
+export const MainBox = styled.div`
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 0px 16px 0 rgba(231, 238, 235, 0.37) inset;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 50px;
+  width: 70%;
+  text-align: center;
+`
+
 export const Title = styled.h1`
   font-size: 45px;
   margin: 20px 0px;
-  text-align: start;
+  text-align: center;
   @media only screen and (max-width: 800px) {
     text-align: center;
     font-size: 30px;
@@ -62,6 +85,7 @@ export const BoxContainer = styled.div`
   text-align: center;
   @media only screen and (max-width: 800px) {
     flex-direction: column;
+    width: 95%;
   }
 `
 
@@ -89,18 +113,19 @@ export const FeatureBox = styled.div`
   width: 100%;
   margin: 5px;
   border-radius: 10px;
-  padding: 10px;
+  padding: 14px;
   flex-direction: row;
 
   @media only screen and (max-width: 800px) {
     flex-direction: column;
+    font-size: 14px;
   }
 `
 
 export const InputContainer = styled(ColumnCenter)`
   margin-left: 30px;
   .inner {
-    width: 70%;
+    width: 80%;
   }
   .label {
     width: 100%;
@@ -112,6 +137,9 @@ export const InputContainer = styled(ColumnCenter)`
     margin-left: 0px;
     .inner {
       width: 100%;
+    }
+    .label {
+      font-size: 14px;
     }
   }
 `
@@ -125,6 +153,10 @@ export const SubmitButton = styled(Button)`
   margin-top: 15px;
   background-color: #5491c4;
   color: white;
+
+  &:hover {
+    background-color: #4481b4;
+  }
 `
 
 export const ImageWrapper = styled.div`
@@ -140,4 +172,43 @@ export const ImageWrapper = styled.div`
   @media only screen and (max-width: 800px) {
     margin: 0px 15px 10px 15px;
   }
+`
+
+export const ShortcutContainer = styled.div`
+  width: 100%;
+  text-align: center;
+  margin: 40px 0px;
+  font-size: 18px;
+
+  .url {
+    margin-top: 15px;
+    width: 350px;
+    text-align: center;
+  }
+  .text {
+    margin-top: 30px;
+  }
+  .title {
+    font-size: 25px;
+    font-weight: 600;
+  }
+  .explain_container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0px;
+
+    .one_explain {
+      width: 50%;
+    }
+    @media only screen and (max-width: 800px) {
+      flex-direction: column;
+      .one_explain {
+        width: 100%;
+      }
+    }
+  }
+`
+
+export const MainImage = styled(Image)`
+  width: 60vw;
 `

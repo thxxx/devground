@@ -8,25 +8,28 @@ const FooterContainer = styled.footer`
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
-  .a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
+  .team {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .info {
+    margin-top: 30px;
+    color: rgba(150, 150, 150, 1);
   }
 `
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by <span>MemoMountain</span>
-      </a>
+      <div className="team">
+        MEMO-ON <span style={{ color: 'gray' }}>by</span> Cosmic Resonance
+      </div>
+      <div>Mail : cos.resonance@gmail.com</div>
+      <div className="info">
+        ⓒ 2022. Cosmic Resonance, Inc. all rights reserved.
+      </div>
     </FooterContainer>
   )
 }

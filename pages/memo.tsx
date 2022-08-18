@@ -76,6 +76,9 @@ const HeadingContainer = styled.div`
   color: rgba(0, 0, 0, 0.5);
 
   .title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   @media only screen and (max-width: 1000px) {
@@ -88,12 +91,13 @@ const UrlDateContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(0, 0, 0, 0.5);
-
-  @media only screen and (max-width: 1000px) {
-    font-size: 13px;
-  }
+  margin-top: 6px;
+  border-top-width: 1px;
+  border-top-color: rgba(0, 0, 0, 0.1);
+  padding-top: 14px;
+  padding-bottom: 3px;
 
   .url {
     width: 70%;
@@ -101,9 +105,25 @@ const UrlDateContainer = styled.div`
     white-space: nowrap;
     overflow: hidden;
   }
+
+  .title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   .date {
     width: 30%;
     text-align: end;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 12px;
+  }
+`
+
+const Desc = styled.div`
+  .desc {
+    color: rgba(100, 100, 100, 1);
   }
 `
 
@@ -172,10 +192,15 @@ const MemoPage = () => {
         {init ? (
           <>
             {userInfo.length > 1 ? (
-              <Title>INKON 메모들 By you</Title>
+              <Title>MEMO-ON에 저장된 메모들</Title>
             ) : (
               <Title>크롬확장프로그램을 켠 후 로그인을 하셔야 합니다.</Title>
             )}
+            <Desc>
+              <div className="desc">
+                직접 저장하신 메모들이 최신순으로 정렬되어있습니다.
+              </div>
+            </Desc>
             <WriteInnerContainer>
               {memos && (
                 <>
@@ -187,14 +212,15 @@ const MemoPage = () => {
                         key={item.createdAt}
                       >
                         <Memo>{item.memo}</Memo>
-                        <HeadingContainer>
+                        {/* <HeadingContainer>
                           <div className="title">{item.title}</div>
                           <div className="h1">{item.h1}</div>
-                        </HeadingContainer>
+                        </HeadingContainer> */}
                         <UrlDateContainer>
-                          <div className="url">{item.url}</div>
+                          {/* <div className="url">{item.url}</div> */}
+                          <div className="title">{item.title}</div>
                           <div className="date">
-                            {date[0]}.{date[1]}.{date[2]} {date[3]}
+                            {date[0]}.{date[1]}.{date[2]}
                           </div>
                           {/* <span className="arrow">▶</span> */}
                         </UrlDateContainer>

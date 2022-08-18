@@ -10,8 +10,9 @@ const AppContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 3vw;
-  position: absolute;
+  position: fixed;
   top: 0;
+  z-index: 1200;
 `
 
 const ButtonContainer = styled.div`
@@ -50,15 +51,15 @@ const AppBar = () => {
   return (
     <AppContainer>
       <Link href="/">
-        <LinkToHome>INKON</LinkToHome>
+        <LinkToHome>MEMO-ON</LinkToHome>
       </Link>
       <ButtonContainer>
         <Link href="/memo">
           <LinkTo>내 메모</LinkTo>
         </Link>
-        <Link href="/news">
-          <LinkTo>문의</LinkTo>
-        </Link>
+        <LinkTo href="https://tally.so/r/mRGjOj" target="_blank">
+          문의
+        </LinkTo>
       </ButtonContainer>
     </AppContainer>
   )
