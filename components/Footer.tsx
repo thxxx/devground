@@ -19,6 +19,15 @@ const FooterContainer = styled.footer`
     margin-top: 30px;
     color: rgba(150, 150, 150, 1);
   }
+  @media only screen and (max-width: 800px) {
+    font-size: 14px;
+    .team {
+      font-size: 17px;
+    }
+    .info {
+      font-size: 13px;
+    }
+  }
 `
 
 const Footer = () => {

@@ -5,6 +5,7 @@ import AppBar from '../components/AppBar'
 import Footer from '../components/Footer'
 import { Title } from '../styles/homestyles'
 import styles from '../styles/Home.module.css'
+import { isMobile } from 'react-device-detect'
 
 const WriteContainer = styled.div`
   width: 100vw;
@@ -130,6 +131,29 @@ const Desc = styled.div`
   }
 `
 
+const MobileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 90vw;
+
+  a {
+    margin-top: 10px;
+    color: #5491c4;
+    font-weight: 800;
+    font-size: 20px;
+  }
+`
+
+const MobileTitle = styled(Title)`
+  font-size: 21px;
+  @media only screen and (max-width: 1000px) {
+    font-size: 18px;
+  }
+`
+
 const MemoPage = () => {
   const [userInfo, setUserInfo] = useState('')
   const [memos, setMemos] = useState([])
@@ -194,16 +218,31 @@ const MemoPage = () => {
       <WriteContainer>
         {init ? (
           <>
-            {userInfo.length > 1 ? (
-              <Title>Scrib에 저장된 메모들</Title>
+            {userInfo.length < 1 ? (
+              <>
+                <Title>Scrib에 저장된 메모들</Title>
+                <Desc>
+                  <div className="desc">
+                    직접 작성한 메모들이 최신순으로 정렬되어있습니다.
+                  </div>
+                </Desc>
+              </>
+            ) : true ? (
+              <>
+                <MobileContainer>
+                  <MobileTitle>
+                    죄송합니다. 아직까지 모바일에서는 사용이 불가능합니다.
+                  </MobileTitle>
+                  <div>
+                    만약 불편을 겪으셨다면 아래 문의하기를 클릭해서 의견을
+                    남겨주세요! 바로 반영하도록 하겠습니다.
+                  </div>
+                  <a href="https://tally.so/r/mRGjOj">문의하기</a>
+                </MobileContainer>
+              </>
             ) : (
               <Title>크롬확장프로그램을 켠 후 로그인을 하셔야 합니다.</Title>
             )}
-            <Desc>
-              <div className="desc">
-                직접 작성한 메모들이 최신순으로 정렬되어있습니다.
-              </div>
-            </Desc>
             <WriteInnerContainer>
               {memos && (
                 <>

@@ -60,6 +60,8 @@ const Home: NextPage = () => {
       }
       await dbService.collection('feedback').add(body)
       alert('메일이 제출되었습니다.')
+      setMail('')
+      setJob('')
     }
   }
 

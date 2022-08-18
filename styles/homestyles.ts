@@ -67,6 +67,9 @@ export const DefaultButton2 = styled.a`
   &:hover {
     background-color: rgba(0, 0, 0, 0.9);
   }
+  @media only screen and (max-width: 800px) {
+    margin-left: 0px;
+  }
 `
 
 export const DefaultButton3 = styled(DefaultButton2)`
@@ -99,6 +102,7 @@ export const BoxContainer = styled.div`
   align-items: center;
   text-align: center;
   @media only screen and (max-width: 800px) {
+    padding: 70px 25px 70px 25px;
     flex-direction: column;
     width: 95%;
   }
@@ -162,6 +166,9 @@ export const InputContainer = styled(ColumnCenter)`
     }
     .label {
       font-size: 14px;
+    }
+    .input_wrapper {
+      padding-top: 10px;
     }
   }
 `

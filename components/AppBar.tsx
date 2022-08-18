@@ -34,6 +34,9 @@ const LinkTo = styled.a`
     color: black;
     font-weight: 600;
   }
+  @media only screen and (max-width: 800px) {
+    font-size: 15px;
+  }
 `
 
 const LinkToHome = styled.a`
@@ -46,6 +49,9 @@ const LinkToHome = styled.a`
   &:hover {
     color: black;
     font-weight: 700;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 20px;
   }
 `
 
