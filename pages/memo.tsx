@@ -239,7 +239,6 @@ const MemoPage = () => {
           })
         })
       getMemo()
-    } else {
     }
   }
 
