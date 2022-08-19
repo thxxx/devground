@@ -7,7 +7,6 @@ import Footer from '../components/Footer'
 import {
   MainContainer,
   Title,
-  DefaultButton3,
   DefaultButton,
   DefaultButton2,
   ColumnCenter,
@@ -34,6 +33,7 @@ import hierarchy from '../assets/hierarchy.png'
 import shortcut from '../assets/shortcut.png'
 import short from '../assets/short.png'
 import main from '../assets/main.png'
+import chrome from '../assets/chrome.png'
 
 const Home: NextPage = () => {
   const [userInfo, setUserInfo] = useState('')
@@ -84,7 +84,10 @@ const Home: NextPage = () => {
               <DefaultButton>내 메모들 보러가기</DefaultButton>
             </Link>
             <Link href="/memo">
-              <DefaultButton2>사용하러 가기</DefaultButton2>
+              <DefaultButton2>
+                <Image width={20} height={20} src={chrome} alt="chrome_icon" />
+                <span className="text">설치하기</span>
+              </DefaultButton2>
             </Link>
           </ButtonContainer>
         </MainBox>

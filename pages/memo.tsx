@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import { Title } from '../styles/homestyles'
 import styles from '../styles/Home.module.css'
 import { isMobile } from 'react-device-detect'
+import { deleteDoc, doc } from 'firebase/firestore'
 
 const WriteContainer = styled.div`
   width: 100vw;
@@ -65,7 +66,7 @@ const OneMemo = styled.div`
 
 const Memo = styled.div`
   font-size: 17px;
-  padding: 10px 0px;
+  padding: 10px 5px 15px 5px;
   width: 100%;
 `
 
@@ -89,6 +90,12 @@ const HeadingContainer = styled.div`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+  }
+  .delete {
+    z-index: 2;
+    &:hover {
+      color: rgba(0, 0, 0, 0.5);
+    }
   }
 
   @media only screen and (max-width: 1000px) {
@@ -174,31 +181,30 @@ const MemoPage = () => {
   }, [])
 
   useEffect(() => {
-    async function getMemo() {
-      const didMemo = await dbService
-        .collection('memo')
-        .where('id', '==', userInfo)
-        .orderBy('createdAt', 'desc')
-        .get()
-      const memoText: any = didMemo.docs.map((doc) => {
-        return { ...doc.data() }
-      })
-      if (memoText.length > 0) {
-        setMemos(memoText)
-      }
-      setInit(true)
-    }
-
     getMemo()
   }, [userInfo])
+
+  async function getMemo() {
+    const didMemo = await dbService
+      .collection('memo')
+      .where('id', '==', userInfo)
+      .orderBy('createdAt', 'desc')
+      .get()
+    const memoText: any = didMemo.docs.map((doc) => {
+      return { ...doc.data(), memo_id: doc.id }
+    })
+    if (memoText.length > 0) {
+      setMemos(memoText)
+    }
+    setInit(true)
+  }
+
   const openWindow = (url: string) => {
     window.open(url, '_blank')
   }
 
   const returnDate = (createdAt: number) => {
     const date = new Date(createdAt).toString().split(' ')
-
-    console.log(date, 'adw')
 
     const months: any = {
       Jan: '01',
@@ -216,6 +222,25 @@ const MemoPage = () => {
     }
 
     return [date[3], months[date[1]], date[2], date[4]?.split(':')[0]]
+  }
+
+  const deleteMemo = async (url: string, memo_id: string) => {
+    const answer = window.confirm('삭제하시겠습니까?')
+    if (answer) {
+      await dbService
+        .collection('memo')
+        .where('url', '==', url)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            if (doc.id === memo_id) {
+              doc.ref.delete()
+            }
+          })
+        })
+      getMemo()
+    } else {
+    }
   }
 
   return (
@@ -257,7 +282,11 @@ const MemoPage = () => {
                         onClick={() => openWindow(item.url)}
                         key={item.createdAt}
                       >
-                        <Memo>{item.memo}</Memo>
+                        <Memo
+                          dangerouslySetInnerHTML={{
+                            __html: item.memo.replace(/\n/g, '<br>'),
+                          }}
+                        ></Memo>
                         <UrlDateContainer>
                           {/* <div className="url">{item.url}</div> */}
                           <div className="title">{item.title}</div>
@@ -268,6 +297,12 @@ const MemoPage = () => {
                         </UrlDateContainer>
                         <HeadingContainer>
                           <div className="url">{item.url}</div>
+                          <div
+                            className="delete"
+                            onClick={() => deleteMemo(item.url, item.memo_id)}
+                          >
+                            삭제
+                          </div>
                         </HeadingContainer>
                       </OneMemo>
                     )

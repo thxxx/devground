@@ -63,6 +63,13 @@ export const DefaultButton2 = styled.a`
   border: 1px solid #5481c4;
   margin-left: 10px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .text {
+    margin-left: 8px;
+  }
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.9);
