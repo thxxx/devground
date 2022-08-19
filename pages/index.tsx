@@ -155,8 +155,8 @@ const Home: NextPage = () => {
                 스크립에는 앞으로 아래의 기능들이 추가될 예정이에요!
               </div>
               <FeatueContainer>
-                {features.map((item) => (
-                  <FeatureBox>
+                {features.map((item, index) => (
+                  <FeatureBox key={`key_${index}`}>
                     <ImageWrapper>
                       <Image src={item.icon} />
                     </ImageWrapper>
