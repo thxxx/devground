@@ -35,10 +35,26 @@ import short from '../assets/short.png'
 import main from '../assets/main.png'
 import chrome from '../assets/chrome.png'
 
+const features = [
+  {
+    text: '접속한 페이지에 다른 사람이 남긴 메모를 확인할 수 있습니다.',
+    icon: clipboard,
+  },
+  {
+    text: '태그를 통해 메모를 구분하여 저장할 수 있습니다.',
+    icon: hierarchy,
+  },
+  {
+    text: '본인의 메모와 함께 URL을 공유할 수 있습니다.',
+    icon: light,
+  },
+]
+
+const jobs = ['개발자', 'PM/PO', '마케터', '기획', '1인 사업가', '창업자']
+
 const Home: NextPage = () => {
   const [userInfo, setUserInfo] = useState('')
   const [mail, setMail] = useState('')
-  const [job, setJob] = useState('')
 
   useEffect(() => {
     const getLocalStorage = async () => {
@@ -49,7 +65,7 @@ const Home: NextPage = () => {
   }, [])
 
   const submitMail = async () => {
-    if (mail.length < 3 || job.length < 0) {
+    if (mail.length < 3) {
       alert('올바른 양식을 입력해주세요.')
     } else {
       const data = await window.localStorage.getItem('userInfo')
@@ -61,7 +77,6 @@ const Home: NextPage = () => {
       await dbService.collection('feedback').add(body)
       alert('메일이 제출되었습니다.')
       setMail('')
-      setJob('')
     }
   }
 
@@ -81,31 +96,28 @@ const Home: NextPage = () => {
           </Title>
           <ButtonContainer>
             <Link href="/memo">
-              <DefaultButton>내 메모들 보러가기</DefaultButton>
-            </Link>
-            <Link href="/memo">
-              <DefaultButton2>
+              <DefaultButton>
                 <Image width={20} height={20} src={chrome} alt="chrome_icon" />
-                <span className="text">설치하기</span>
-              </DefaultButton2>
+                <span className="text">설치하러 가기</span>
+              </DefaultButton>
             </Link>
+            {/* <Link href="/memo">
+              <DefaultButton2>내 메모들 보러가기</DefaultButton2>
+            </Link> */}
           </ButtonContainer>
         </MainBox>
       </MainContainer>
       <div className={styles.container}>
         <ColumnCenter>
-          {/* 특징 1 : 웹상에서 아주 쉽게 메모를 할 수 있다. */}
-          {/* 특징 2 : 모아서 볼 수 있다. */}
-          {/* 특징 3 : 기능이 추가될 예정. 아래를 봐주세요! */}
-          <MainImage src={main} width={900} height={1250} />
+          <MainImage src={main} width={900} height={680} />
         </ColumnCenter>
         <ShortcutContainer>
           <div className="title">
             <ColorText>스크립을 더 쉽게 사용하는 방법</ColorText>
           </div>
           <div className="explain_container">
-            <div className="one_explain" style={{ marginTop: '20px' }}>
-              <div className="text">
+            <div className="one_explain">
+              <div className="text2">
                 1. 아래의 링크를 <ColorText>복사</ColorText>해서 URL창에
                 붙여넣으신 후
               </div>
@@ -143,31 +155,21 @@ const Home: NextPage = () => {
                 스크립에는 앞으로 아래의 기능들이 추가될 예정이에요!
               </div>
               <FeatueContainer>
-                <FeatureBox>
-                  <ImageWrapper>
-                    <Image src={clipboard} />
-                  </ImageWrapper>
-                  접속한 페이지에 다른 사람이 남긴 메모를 확인할 수 있습니다.
-                </FeatureBox>
-                <FeatureBox>
-                  <ImageWrapper>
-                    <Image src={hierarchy} />
-                  </ImageWrapper>
-                  태그를 통해서 메모의 종류를 구분하여 저장할 수 있습니다.
-                </FeatureBox>
-                <FeatureBox>
-                  <ImageWrapper>
-                    <Image src={light} />
-                  </ImageWrapper>
-                  메모와 함께 공유할 수 있습니다.
-                </FeatureBox>
+                {features.map((item) => (
+                  <FeatureBox>
+                    <ImageWrapper>
+                      <Image src={item.icon} />
+                    </ImageWrapper>
+                    {item.text}
+                  </FeatureBox>
+                ))}
               </FeatueContainer>
             </ColumnCenter>
             <InputContainer>
               <div className="inner">
                 <div className="title">
-                  스크립에 기능이 추가될 때<br />
-                  알람을 받고싶으시다면 아래에 이메일을 적어주세요.
+                  스크립에 기능이 추가될 때 알람을 받고싶으시다면
+                  <br /> 아래에 이메일을 적어주세요.
                 </div>
                 <div className="input_wrapper">
                   <div className="label">메일 입력</div>
@@ -175,12 +177,6 @@ const Home: NextPage = () => {
                     placeholder="example23@gmail.com"
                     value={mail}
                     onChange={(e) => setMail(e.currentTarget.value)}
-                  />
-                  <div className="label">직군</div>
-                  <InputCustom
-                    placeholder="ex) SNS 마케터, PM 등"
-                    value={job}
-                    onChange={(e) => setJob(e.currentTarget.value)}
                   />
                   <SubmitButton onClick={() => submitMail()}>
                     알림받기

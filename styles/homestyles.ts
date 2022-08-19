@@ -48,6 +48,14 @@ export const DefaultButton = styled.a`
   cursor: pointer;
   margin: 5px;
   text-align: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .text {
+    margin-left: 8px;
+  }
 
   &:hover {
     background-color: #4986c0;
@@ -66,10 +74,6 @@ export const DefaultButton2 = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  .text {
-    margin-left: 8px;
-  }
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.9);
@@ -93,7 +97,7 @@ export const ColumnCenter = styled.div`
   width: 100%;
   .title {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 14px;
   }
 `
 
@@ -153,8 +157,13 @@ export const InputContainer = styled(ColumnCenter)`
   padding: 0px 0px 40px 0px;
   justify-content: start;
   .inner {
-    width: 80%;
+    width: 85%;
     font-weight: 700;
+    .title {
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1.8;
+    }
   }
   .label {
     width: 100%;
@@ -163,13 +172,17 @@ export const InputContainer = styled(ColumnCenter)`
   }
 
   .input_wrapper {
-    padding-top: 40px;
+    padding-top: 80px;
   }
 
   @media only screen and (max-width: 800px) {
     margin-left: 0px;
     .inner {
       width: 100%;
+
+      .title {
+        font-size: 16px;
+      }
     }
     .label {
       font-size: 14px;
@@ -182,11 +195,13 @@ export const InputContainer = styled(ColumnCenter)`
 
 export const InputCustom = styled(Input)`
   background-color: white;
+  padding: 25px;
 `
 
 export const SubmitButton = styled(Button)`
   width: 100%;
   margin-top: 15px;
+  padding: 25px;
   background-color: black;
   color: white;
 
@@ -213,21 +228,12 @@ export const ImageWrapper = styled.div`
 export const ShortcutContainer = styled.div`
   width: 100%;
   text-align: center;
-  margin: 40px 0px;
+  margin: 120px 0px;
   font-size: 18px;
 
-  .url {
-    margin-top: 15px;
-    width: 350px;
-    text-align: center;
-  }
-  .text {
-    margin-top: 30px;
-    font-weight: 700;
-  }
   .title {
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 900;
   }
   .explain_container {
     display: flex;
@@ -236,12 +242,34 @@ export const ShortcutContainer = styled.div`
     justify-content: center;
 
     .one_explain {
-      width: 35%;
+      width: 40%;
+      border-radius: 3px;
+      margin: 10px;
+      padding: 10px 10px;
+
+      .text {
+        font-weight: 700;
+      }
+      .text2 {
+        font-weight: 700;
+        margin-top: 30px;
+      }
+      .url {
+        margin-top: 50px;
+        width: 350px;
+        text-align: center;
+      }
     }
     @media only screen and (max-width: 800px) {
       flex-direction: column;
       .one_explain {
         width: 100%;
+        .text2 {
+          margin-top: 0px;
+        }
+        .url {
+          margin-top: 15px;
+        }
       }
     }
   }
