@@ -82,7 +82,7 @@ const Cosmic = () => {
                   }
 
                   return (
-                    <Tr>
+                    <Tr key={item.createdAt}>
                       <Td>
                         {date[0]}.{date[1]}.{date[2]} {date[3]}시
                       </Td>
