@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 const FooterContainer = styled.footer`
   display: flex;
   flex: 1;
-  padding: 5rem 0;
+  padding: 4rem 0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
@@ -30,9 +30,20 @@ const FooterContainer = styled.footer`
   }
 `
 
+const LinkTo = styled.a`
+  text-decoration: underline;
+  padding: 5px 8px;
+
+  &:hover {
+    font-weight: 700;
+    background-color: rgba(100, 100, 100, 0.1);
+  }
+`
+
 const Footer = () => {
   return (
     <FooterContainer>
+      <LinkTo href="https://tally.so/r/mRGjOj">🙋🏻 의견남기기</LinkTo>
       <div className="team">
         Scrib <span style={{ color: 'gray' }}>by</span> Cosmic Resonance
       </div>
