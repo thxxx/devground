@@ -62,7 +62,7 @@ const AppBar = () => {
         <LinkToHome>SCRIB</LinkToHome>
       </Link>
       <ButtonContainer>
-        <LinkTo href="https://tally.so/r/mRGjOj" target="_blank">
+        <LinkTo href="https://bit.ly/3dYsxWB" target="_blank">
           설치하기
         </LinkTo>
         <Link href="/memo">

@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import AppBar from '../components/AppBar'
@@ -95,12 +94,14 @@ const Home: NextPage = () => {
             </div>
           </Title>
           <ButtonContainer>
-            <Link href="/memo">
+            <div
+              onClick={() => window.open('https://bit.ly/3dYsxWB', '_blank')}
+            >
               <DefaultButton>
                 <Image width={20} height={20} src={chrome} alt="chrome_icon" />
                 <span className="text">설치하러 가기</span>
               </DefaultButton>
-            </Link>
+            </div>
             {/* <Link href="/memo">
               <DefaultButton2>내 메모들 보러가기</DefaultButton2>
             </Link> */}
